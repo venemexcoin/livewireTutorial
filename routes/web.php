@@ -7,6 +7,7 @@ use App\Http\Livewire\Home;
 use App\Http\Livewire\Form;
 use App\Http\Livewire\Action;
 use App\Http\Livewire\Product;
+use App\Http\Livewire\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/post', Post::class);
 
 Route::get('/user', User::class);
 
+Route::get('/users', User::class);
+
 Route::get('/home/{name?}', Home::class);
 
 Route::get('/form', Form::class);
@@ -34,3 +37,5 @@ Route::get('/form', Form::class);
 Route::get('/action', Action::class);
 
 Route::get('/product',Product::class);
+
+Route::get('/contact', Contact::class);
