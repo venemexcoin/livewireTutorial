@@ -1,6 +1,11 @@
 <div>
     @include('livewire.create')
     @include('livewire.update')
+    <style>
+        nav svg{
+            max-width: 20px;
+        }
+    </style>
     <section>
         <div class="container">
             <div class="row">
@@ -10,13 +15,19 @@
                     @endif
                     <div class="card mt-5">
                         <div class="card-header">
-                            <h3>All Students
-                                <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
-                                        Add New Student
-                                    </button>
-                            </h3>
-  
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3>All Students
+                                        <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                                                Add New Student
+                                            </button>
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Serch..." wire:model="searchTerm">
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -46,6 +57,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{$students->links()}}
                         </div>
                     </div>
                 </div>

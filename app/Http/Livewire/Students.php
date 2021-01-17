@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Student;
+use Livewire\WithPagination;
 
 class Students extends Component
 {
@@ -12,6 +13,7 @@ class Students extends Component
     public $lastname;
     public $email;
     public $phone;
+    public $searchTerm;
 
 
     /* funcion de limpieza de campos  */
@@ -81,9 +83,16 @@ class Students extends Component
         session()->flash('menssage','Student Deleted Successfully!');
     }
 
+    use WithPagination;
+
     public function render()
     {
-        $students = Student::orderBy('id','DESC')->get();
+        $searchTerm = '%'.$this->searchTerm . '%';
+        $students = Student::where('firstname', 'LIKE',$searchTerm)
+        ->orWhere('lastname','LIKE',$searchTerm)
+        ->orWhere('email','LIKE',$searchTerm)
+        ->orWhere('phone','LIKE',$searchTerm)
+        ->orderBy('id','DESC')->paginate(5);
         return view('livewire.students',['students'=>$students]);
     }
 }
