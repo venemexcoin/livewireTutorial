@@ -12,6 +12,12 @@ class Uploads extends Component
     public $filename;
 
     use WithFileUploads;
+
+    public function resetInputFields()
+    {
+        $this->title = '';
+        $this->filename = '';
+    }
     
     public function fileUpload()
     {
@@ -25,6 +31,7 @@ class Uploads extends Component
         Upload::create($validatedData);
         session()->flash('message','File successfully uploaded!');
         $this->emit('fileUploaded');
+        $this->resetInputFields();
     }
 
     public function render()
