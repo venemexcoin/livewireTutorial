@@ -30,6 +30,10 @@
         window.livewire.on('fileUpload',()=>{
             $('#form-upload')[0].reset();
         });
+
+        window.livewire.on('imagesUploaded',()=>{
+            $('#upload-images')[0].reset();
+        });
     </script>
 </body>
 </html>
